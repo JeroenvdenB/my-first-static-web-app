@@ -1,0 +1,17 @@
+.terminal {
+    --color: rgba(0, 180, 0, 0.99);
+    --background: black;
+    --link-color: blue;
+    --size: 1.5;
+    --animation: terminal-glow;
+    --glow: 1;
+}
+
+.cmd-cursor {
+    --original-color: green;
+}
+
+h1 {
+    color: rgba(0,200,0,1);
+    text-align: center;
+}
