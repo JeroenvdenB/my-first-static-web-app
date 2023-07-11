@@ -1,17 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <title>Vanilla JavaScript App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- My style sheet -->
+    <link rel="stylesheet" href="StyleSheet.css">
+
+    <!-- Dependencies for jquery terminal library -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/jquery.terminal.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css"/>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+    <!-- Terminal commands and options-->
+    <script>
+        $(function() { 
+            $('#terminal').terminal({
+                help: function() {
+                    var helpTXT=`
+    Deze terminal ondersteunt de meeste sneltoetsen zoals die ook in bash voorkomen, zoals pijltje omhoog of omlaag om door vorige commando's te scrollen, en CTRL+D als 'exit' uit submenu's. Verder worden de volgende commando's ondersteund:
+        
+        help            Daar kijk je nu naar. 'help' gevolgd door een commando word niet ondersteund
+        jeroen          Wie ben ik eigenlijk?
+        stats           Mijn 'stats' en andere leuke weetjes 
+        opleiding       Laat mijn opleidingen en certificaten zien
+        ervaring        Een overzicht van mijn werkervaring
+        portfolio       Geeft een aantal github links met projecten waar ik aan heb gewerkt.
+        contact         E-mail en recrutergegevens
+        about           Vertelt u meer over deze terminal
+        kat             Laat een foto van een kat zien. Heel belangrijk.
+        `
+                    this.echo(helpTXT, {keepWords: true});
+                },
+                kat: function() {
+                    var newImage = new Image();
+                    newImage.src = "https://cataas.com/c?" + new Date().getTime();
+                    newImage.height = window.innerHeight * 0.6;
+                    this.echo(newImage);
+                },
+                jeroen: function() {
+                    var photo = new Image();
+                    photo.src = "https://cdn.discordapp.com/attachments/789615526846267392/1123617124347297852/133998.jpg";
+                    photo.height = window.innerHeight * 0.4;
+                    this.echo(photo);    
+
+                    var helpTXT=`
+    Nou, uh, ik ben Jeroen! Ik woon samen met mijn vriend in Groesbeek, in de buurt van Nijmegen. Na mijn studie scheikunde aan de Radboud Universiteit ben ik les gaan geven op het Stedelijk Gymnasium in Nijmegen. Voor de klas staan gaf me veel voldoening, en ik denk dat er maar weinig beroepen zijn die zulke bijzondere momenten beleven. Helaas was ik op ten duur te druk met taken waar mijn hart niet lag. Het werd tijd voor een nieuwe tak van sport, zodat ik mezelf weer kon prikkelen en nieuwe dingen kon leren.
+    
+    En zie hier, ik kan een leuke website maken! Die uitdaging is dus gevonden. De afgelopen maanden heb ik de basisbeginselen van software development geleerd. Denk aan HTTPS, CSS, JS, Bootstrap, Java, Spring, DTO's, jQuery, Encapsulation en de meest voorkomende design patterns. Het is de afgelopen maanden overduidelijk geworden: ik heb een goede overstap gemaakt!
+    
+    Nu ben ik op zoek naar een tof bedrijf waar ik voor langere tijd al werkende verder kan leren. Denk je dat we een match zijn? Dan kom ik graag een keer koffie drinken!
+
+    Dit schermpje begint vol te raken, maar typ gerust 'stats' voor nog wat meer weetjes, of 'ervaring' voor mijn loopbaan tot nu toe.
+        `
+                    this.echo(helpTXT, {keepWords: true});
+                },
+                stats: function() {
+                    var helpTXT=`
+    ----------------------------------------------------------
+                            JEROEN
+    ----------------------------------------------------------
+    Hobby's         :       3D-printen, boekbinden, D&D, lezen
+    Favoriete...
+      ... leesvoer  :       Urban Fantasy
+      ... muziek    :       Rock
+      ... DnD class :       Wizard
+      ... film      :       Turning Red (Pixar)
+      ... game      :       Open voor suggesties
+      ... eten      :       Enchilladas
+
+    ----------------------------------------------------------
+                            SKILLS
+    ----------------------------------------------------------
+    Engels          :       + + + + + + + + + +
+    Nederlans       :       + + + + + + + + 
+    Presenteren     :       + + + + + + + + + +
+    Analyse         :       + + + + + + + + 
+    Python          :       + + + 
+    Java            :       + + + + +
+    HTML/CSS/JS     :       + + + +
+        `
+                    this.echo(helpTXT, {keepWords: true});    
+                },
+                opleiding: function() {
+                    var helpTXT=`
+    2023        :   Oracle Certified Fundamentals Associate (OCFA)
+    2023        :   Agile Scrum foundation certificaat                
+    2023        :   Java traineeship bij YoungCapital NEXT
+    2015-2018   :   MSc. Chemistry and Education, Radboud Universiteit Nijmegen
+    2012-2015   :   BSc. Chemistry, Radboud Universiteit Nijmegen
+    2006-2012   :   Hendrik Pierson College, Zetten
+        `
+                    this.echo(helpTXT, {keepWords: true});    
+                },
+                ervaring: function() {
+                    var helpTXT=`
+    2023-heden  :   IT Traineeship, uitstroomrichting Java Developer, YoungCapital NEXT
+                        * Basisbeginselen software development
+                    
+    2018-2023   :   Docent Scheikunde 1e graad, Stedelijk Gymnasium Nijmegen
+                        * Werken onder sterk varierende druk
+                        * Omgang met verschillende persoonlijkheden
+                        * Nauwe samenwerking met collega's in de sectie
+                        * Flexibel zijn is een must
+                        
+    2014-2017   :   Student-assistent Practica, Radboud Universiteit
+                        * Doceren van praktische vaardigheden
+                        * Leiderschap op de labzaal
+                        * Een veilige leeromgeving creeren
+        `
+                    this.echo(helpTXT, {keepWords: true});    
+                }, 
+                portfolio: function() {
+                    var helpTXT=`
+    [[ub;lightgreen;]Project YoungCapital NEXT]
+    GitHub repo: [[!;;]https://github.com/ycMei2023]
+    
+    Samen met een andere java dev en twee DevOps'ers hebben we een front- en backend applicatie gemaakt om hotelreserveringen te plaatsen voor een fictief hotel. De frontend gebruikt HTML, JS en CSS met Bootstrap; de backend is Java met het Spring Boot framework. Het project duurde ongeveer drie weken, naast lessen en examens.
+    
+    [[ub;lightgreen;]Discord Bot] - [[i;red;]Under construction]
+    GitHub repo: [[!;;]https://github.com/JeroenvdenB/Peglotron]
+
+    Het project waar dit avontuur mee begon. De bot in mijn discord server ging kapot, en de ontwikkelaar bood geen onderhoud meer. Ik dacht, "hoe moeilijk kan het zijn?". Met niets meer dan ambitie, Python voor Dummies, en Stackoverflow ging ik aan de slag. Het zette me op het pad van software development en ik ben onderweg talloze leerzame ervaringen tegengekomen.
+    Nou nog afmaken ;)
+
+    [[ub;lightgreen;]Interactief CV]
+    GitHub repo: [[!;;]https://github.com/JeroenvdenB/JeroenvdenB.github.io]
+
+    Dit is de sourcecode van de website waar je nu naar kijkt :)    
+    `
+                    this.echo(helpTXT, {keepWords: true});
+                },
+                contact: function() {
+                    var helpTXT=`
+    LinkedIn    :       [[!;;]https://www.linkedin.com/in/jeroen-van-den-berg-31252ab5/]
+    E-mail      :       [[!;;]mailto:j.vanden.berg1994@gmail.com]
+    
+    Neem bij interesse contact op met mijn YoungCapital NEXT Talent Manager, Ralph Smulders.
+
+    [[u;;]YoungCapital NEXT Talent Manager]
+    Naam        :       Ralph Smulders
+    Tel.        :       +31651422635
+    E-mail      :       [[!;;]mailto:r.smulders@next.youngcapital.nl]
+    `
+                    this.echo(helpTXT, {keepWords: true});
+                },
+                about: function() {
+                    var helpTXT=`
+    Deze website maakt intensief gebruik van de JQuery Terminal library ((c) Jakub T. Jankiewicz) versie 2.36.0.min. ASCII art banner is gemaakt met patorjk.com's tool. Voorzien van katten door de Cat as a service REST API.
+    
+    JQuery Terminal     :   [[!;;]https://terminal.jcubic.pl/].
+    ASCII art           :   [[!;;]http://www.patorjk.com/software/taag].
+    Cats as a service   :   [[!;;]https://cataas.com/#/].
+    
+    Laatste update: 29-06-2023.
+    `
+                    this.echo(helpTXT, {keepWords: true});
+                }
+            },
+            { //Pass terminal options here
+                greetings: function(callback){
+                    var large = BigGreetings.innerHTML;
+                    var small = SmallGreetings.innerHTML;
+                    callback(this.cols() > 125 ? large : small); //prevents text overflow out of the line
+                },
+                prompt: "[[;green;]>>> ]",
+                height: window.innerHeight-50
+            })
+        });
+    </script>
 </head>
 
 <body>
-  <main>
-    <h1>Vanilla JavaScript App</h1>
-  </main>
-</body>
+    <!-- ASCII art for the greeting -->
+    <template id="BigGreetings">
+  _____ _   _      __         ___                             _   _               ______             ______                
+ /  __ \ | | |  _  \ \       |_  |                           | | | |              |  _  \            | ___ \               
+ | /  \/ | | | (_)  \ \        | | ___ _ __ ___   ___ _ __   | | | | __ _ _ __    | | | |___ _ __    | |_/ / ___ _ __ __ _ 
+ | |   | | | |       \ \       | |/ _ \ '__/ _ \ / _ \ '_ \  | | | |/ _` | '_ \   | | | / _ \ '_ \   | ___ \/ _ \ '__/ _` |
+ | \__/\ \_/ /  _     \ \  /\__/ /  __/ | | (_) |  __/ | | | \ \_/ / (_| | | | |  | |/ /  __/ | | |  | |_/ /  __/ | | (_| |
+  \____/\___/  (_)     \_\ \____/ \___|_|  \___/ \___|_| |_|  \___/ \__,_|_| |_|  |___/ \___|_| |_|  \____/ \___|_|  \__, |
+                                                                                                                      __/ |
+    Ik ben beschikbaar voor een nieuwe uitdaging!                                                                    |___/                                                                                                               
 
+    Welkom op mijn CV. Typ 'help' voor alle beschikbare commando's. Typ 'contact' om direct mijn contactgegevens te zien.                                                                                                                 
+    </template>
+      
+    <template id="SmallGreetings">                                                                                               
+      ___ __   __ _ __        _          _  ___ 
+     / __|\ \ / /(_)\ \    _ | |__ __ __| || _ )
+    | (__  \ V /  _  \ \  | || |\ V // _` || _ \
+     \___|  \_/  (_)  \_\  \__/  \_/ \__,_||___/
+                       
+    Ik ben beschikbaar voor een nieuwe uitdaging! 
+    
+    Welkom op mijn CV. Typ 'help' voor alle 
+    beschikbare commando's. Typ 'contact' om 
+    direct mijn contactgegevens te zien. 
+    </template>
+
+    <!-- Page content starts here -->
+    <div 
+        class="bg-image" 
+        style="
+            background-image: url('https://cdn.discordapp.com/attachments/789615526846267392/1123578176745000971/Schermafbeelding_2020-11-09_195259_2022_06_23_09_15_31_UTC.png');
+            height: 100vh;
+        "
+    >
+
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div>&nbsp;</div>
+                    <div id="terminal"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
 </html>
